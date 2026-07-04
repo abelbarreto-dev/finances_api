@@ -1,11 +1,10 @@
-export enum InvoiceStatus {
-  PENDING = "PENDING",
-  PAID = "PAID",
-  CANCELED = "CANCELED",
-  CONTINUED = "CONTINUED",
+export enum MoneyType {
+  PAYMENT = "PAYMENT",
+  RECEIPT = "RECEIPT",
+  TRANSFER = "TRANSFER"
 }
 
-export enum InvoiceType {
+export enum MoneyMethod {
   CASH = "CASH",
   PIX = "PIX",
   DOC = "DOC",
@@ -14,5 +13,5 @@ export enum InvoiceType {
   DEBIT_CARD = "DEBIT_CARD",
   CHECK = "CHECK",
   BANK_SLIP = "BANK_SLIP",
-  OTHER = "OTHER",
+  OTHER = "OTHER"
 }

@@ -14,7 +14,7 @@ export class BankBox {
   @Column({ name: "bank_id", type: "uuid", nullable: false })
   bankId: string;
 
-  @ManyToMany(() => Bank, (bank) => bank.bank_boxes)
+  @ManyToMany(() => Bank)
   @JoinColumn({ name: "bank_id", referencedColumnName: "id" })
   user: Bank;
 
