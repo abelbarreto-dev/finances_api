@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Cash } from "./Cash";
 
 @Entity("users")
 export class User {
@@ -19,10 +20,22 @@ export class User {
   @Column({ type: "varchar", length: 20, nullable: true })
   phone?: string;
 
-  @Column({ name: "created_at", type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
+  @OneToMany(() => Cash, (cash) => cash.user)
+  cashes: Cash[];
+
+  @Column({
+    name: "created_at",
+    type: "timestamp",
+    default: () => "CURRENT_TIMESTAMP",
+  })
   createAt: Date;
 
-  @Column({ name: "updated_at", type: "timestamp", default: () => "CURRENT_TIMESTAMP", onUpdate: "CURRENT_TIMESTAMP" })
+  @Column({
+    name: "updated_at",
+    type: "timestamp",
+    default: () => "CURRENT_TIMESTAMP",
+    onUpdate: "CURRENT_TIMESTAMP",
+  })
   updatedAt: Date;
 
   @Column({ name: "deleted_at", type: "timestamp", nullable: true })
