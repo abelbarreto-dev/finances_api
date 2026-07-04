@@ -1,0 +1,33 @@
+{
+  "name": "finances_api",
+  "version": "1.0.0",
+  "description": "finances application backend api",
+  "keywords": [
+    "finances"
+  ],
+  "homepage": "https://github.com/abelbarreto-dev/finances_api#readme",
+  "bugs": {
+    "url": "https://github.com/abelbarreto-dev/finances_api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abelbarreto-dev/finances_api.git"
+  },
+  "license": "MIT",
+  "author": "Abel Carvalho",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest --verbose"
+  },
+  "dependencies": {
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@jest/globals": "^30.4.1",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^26.1.0",
+    "jest": "^30.4.2",
+    "ts-jest": "^29.4.11"
+  }
+}
