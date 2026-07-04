@@ -3,26 +3,42 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
+import { BankBox } from "./BankBox";
 import { User } from "./User";
 
-@Entity("cashes")
-export class Cash {
+@Entity("banks")
+export class Bank {
   @PrimaryGeneratedColumn("uuid") id: string;
 
   @Column({ name: "user_id", type: "uuid", nullable: false })
   userId: string;
 
-  @ManyToOne(() => User, (user) => user.cashes)
+  @ManyToOne(() => User, (user) => user.banks)
   @JoinColumn({ name: "user_id", referencedColumnName: "id" })
   user: User;
 
-  @Column({ type: "varchar", length: 32, nullable: false })
-  tag: string;
+  @OneToMany(() => BankBox, (bankBox) => bankBox.user)
+  bank_boxes: BankBox[];
 
-  @Column({ type: "varchar", length: 128, nullable: true })
-  description?: string;
+  @Column({ type: "varchar", length: 10, nullable: false })
+  code: string;
+
+  @Column({ type: "varchar", length: 64, nullable: false })
+  name: string;
+
+  @Column({ type: "varchar", length: 32, nullable: true })
+  agency: string;
+
+  @Column({
+    name: "account_number",
+    type: "varchar",
+    length: 32,
+    nullable: false,
+  })
+  accountNumber: string;
 
   @Column({
     type: "decimal",

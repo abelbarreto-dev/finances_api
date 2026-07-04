@@ -1,22 +1,22 @@
 import {
-  Column,
   Entity,
   JoinColumn,
-  ManyToOne,
+  ManyToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { User } from "./User";
+import { Column } from "typeorm/browser/decorator/columns/Column.js";
+import { Bank } from "./Bank";
 
-@Entity("cashes")
-export class Cash {
+@Entity("bank_boxes")
+export class BankBox {
   @PrimaryGeneratedColumn("uuid") id: string;
 
-  @Column({ name: "user_id", type: "uuid", nullable: false })
-  userId: string;
+  @Column({ name: "bank_id", type: "uuid", nullable: false })
+  bankId: string;
 
-  @ManyToOne(() => User, (user) => user.cashes)
-  @JoinColumn({ name: "user_id", referencedColumnName: "id" })
-  user: User;
+  @ManyToMany(() => Bank, (bank) => bank.bank_boxes)
+  @JoinColumn({ name: "bank_id", referencedColumnName: "id" })
+  user: Bank;
 
   @Column({ type: "varchar", length: 32, nullable: false })
   tag: string;

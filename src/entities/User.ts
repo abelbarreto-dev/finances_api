@@ -1,4 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Bank } from "./Bank";
 import { Cash } from "./Cash";
 
 @Entity("users")
@@ -23,12 +24,15 @@ export class User {
   @OneToMany(() => Cash, (cash) => cash.user)
   cashes: Cash[];
 
+  @OneToMany(() => Bank, (bank) => bank.user)
+  banks: Bank[];
+
   @Column({
     name: "created_at",
     type: "timestamp",
     default: () => "CURRENT_TIMESTAMP",
   })
-  createAt: Date;
+  createdAt: Date;
 
   @Column({
     name: "updated_at",
