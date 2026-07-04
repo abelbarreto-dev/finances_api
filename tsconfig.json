@@ -43,7 +43,8 @@
 
     // typeorm
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "strictPropertyInitialization": false
   },
   "include": ["src/**/*", "eslint.config.ts"],
   "exclude": ["dist", "node_modules"]
