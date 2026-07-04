@@ -1,6 +1,4 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Bank } from "./Bank";
-import { Cash } from "./Cash";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("users")
 export class User {
@@ -20,12 +18,6 @@ export class User {
 
   @Column({ type: "varchar", length: 20, nullable: true })
   phone?: string;
-
-  @OneToMany(() => Cash, (cash) => cash.user)
-  cashes: Cash[];
-
-  @OneToMany(() => Bank, (bank) => bank.user)
-  banks: Bank[];
 
   @Column({
     name: "created_at",

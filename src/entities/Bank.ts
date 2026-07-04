@@ -3,10 +3,8 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { BankBox } from "./BankBox";
 import { User } from "./User";
 
 @Entity("banks")
@@ -16,12 +14,9 @@ export class Bank {
   @Column({ name: "user_id", type: "uuid", nullable: false })
   userId: string;
 
-  @ManyToOne(() => User, (user) => user.banks)
+  @ManyToOne(() => User)
   @JoinColumn({ name: "user_id", referencedColumnName: "id" })
   user: User;
-
-  @OneToMany(() => BankBox, (bankBox) => bankBox.user)
-  bank_boxes: BankBox[];
 
   @Column({ type: "varchar", length: 10, nullable: false })
   code: string;

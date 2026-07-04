@@ -14,7 +14,7 @@ export class Cash {
   @Column({ name: "user_id", type: "uuid", nullable: false })
   userId: string;
 
-  @ManyToOne(() => User, (user) => user.cashes)
+  @ManyToOne(() => User)
   @JoinColumn({ name: "user_id", referencedColumnName: "id" })
   user: User;
 
